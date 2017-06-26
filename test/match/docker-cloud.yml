@@ -1,0 +1,18 @@
+service-1:
+  image: 'namespace/service-1:latest'
+  command: npm run start
+  environment:
+    - ENV_1=value1
+    - ENV_2=value2
+  expose:
+    - '3000'
+  links:
+    - service-2
+service-2:
+  image: 'namespace/service-2:latest'
+  command: npm run start
+  environment:
+    - ENV_1=value1
+    - ENV_2=value2
+  expose:
+    - '3000'

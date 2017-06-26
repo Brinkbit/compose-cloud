@@ -1,0 +1,21 @@
+version: '2.1'
+services:
+    # the first service
+    service-1:
+        image: namespace/service-1:latest
+        command: npm run start
+        environment:
+            - OVERRIDE_ENV_1=value1
+        expose:
+            - '3000'
+        links:
+            - service-2
+
+    # the second service
+    service-2:
+        image: namespace/service-2:latest
+        command: npm run start
+        environment:
+            - OVERRIDE_ENV_1=value1
+        expose:
+            - '3000'
