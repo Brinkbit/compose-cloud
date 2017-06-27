@@ -1,0 +1,8 @@
+version: '2.1'
+services:
+    service-3:
+        extends:
+            file: test/source/docker-compose.extends.yml
+            service: service-3
+        environment:
+            - ENV_4=value4

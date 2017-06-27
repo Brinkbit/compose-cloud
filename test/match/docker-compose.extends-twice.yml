@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+  service-3:
+    image: 'namespace/service-1:latest'
+    build:
+      context: .
+      args:
+        - ENV_1=value1
+    command: npm run start
+    environment:
+      - ENV_4=value4
+      - ENV_3=value3
+      - ENV_1=value1
+      - ENV_2=value2
+    expose:
+      - '3000'
+    links:
+      - service-2

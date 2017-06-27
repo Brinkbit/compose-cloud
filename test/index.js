@@ -32,6 +32,16 @@ describe( 'compose-cloud', function() {
                     .to.eventually.be.true
             );
         });
+
+        it( 'should properly handle extended services', function() {
+            return core.bundle(
+                ['./test/source/docker-compose.extends-twice.yml'],
+                { file: dest }
+            ).then(() =>
+                expect( filesMatch( dest, './test/match/docker-compose.extends-twice.yml' ))
+                    .to.eventually.be.true
+            );
+        });
     });
 
     describe( 'convert', function() {
