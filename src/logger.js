@@ -8,6 +8,7 @@ module.exports = function createLogger( options ) {
                 showLevel: false,
                 level: 'error',
                 handleExceptions: false,
+                prettyPrint: true,
             }, ( options || {}))),
         ],
     });
