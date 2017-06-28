@@ -38,7 +38,7 @@ describe( 'compose-cloud', function() {
                 ['./test/source/docker-compose.extends-twice.yml'],
                 { file: dest }
             ).then(() =>
-                expect( filesMatch( dest, './test/match/docker-compose.extends-twice.yml' ))
+                expect( filesMatch( dest, './test/match/docker-compose.extends.yml' ))
                     .to.eventually.be.true
             );
         });

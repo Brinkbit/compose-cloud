@@ -6,3 +6,6 @@ services:
             service: service-1
         environment:
             - ENV_3=value3
+            - ENV_4=value4
+        volumes:
+            - './dir:/otherDir'

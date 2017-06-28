@@ -8,6 +8,7 @@ services:
         - ENV_1=value1
     command: npm run start
     environment:
+      - ENV_4=value4
       - ENV_3=value3
       - ENV_1=value1
       - ENV_2=value2
@@ -15,3 +16,5 @@ services:
       - '3000'
     links:
       - service-2
+    volumes:
+      - './dir:/someDir'
