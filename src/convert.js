@@ -32,7 +32,13 @@ module.exports = function convert( sourcefile, options ) {
                     'tags',
                     'target_num_containers',
                 ] :
-                [ 'build', 'external_links', 'env_file' ]
+                [
+                    'build',
+                    'external_links',
+                    'env_file',
+                    'depends_on',
+                    'healthcheck',
+                ]
             );
         });
         logger.debug( 'converted:', converted );

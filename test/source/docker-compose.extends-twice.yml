@@ -6,3 +6,5 @@ services:
             service: service-3
         environment:
             - ENV_4=value4
+        volumes:
+            - './dir:/someDir'

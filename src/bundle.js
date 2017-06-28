@@ -5,9 +5,33 @@ const winston = require( './logger' );
 
 let logger;
 
+function smartMerge( objValue, srcValue, key ) {
+    const objSplit = _.map( objValue, val => val.split( key ));
+    const srcSplit = _.map( srcValue, val => val.split( key ));
+    logger.debug( 'split vals:', objSplit, srcSplit );
+    const union = _.unionBy( srcSplit, objSplit, val => val[0]);
+    logger.debug( 'union:', union );
+    return _.map( union, val => val.join( key ));
+}
+
 function merge( ...docs ) {
     logger.debug( 'merging docs:', docs );
-    const merged = _.mergeWith( ...docs, ( objValue, srcValue ) => {
+    const merged = _.mergeWith( ...docs, ( objValue, srcValue, key ) => {
+        if ( _.indexOf([
+            'environment',
+            'labels',
+            'args',
+        ], key ) !== -1 ) {
+            logger.debug( 'smart merging', key, objValue, srcValue );
+            return smartMerge( objValue, srcValue, '=' );
+        }
+        if ( _.indexOf([
+            'volumes',
+            'devices',
+        ], key ) !== -1 ) {
+            logger.debug( 'smart merging', key );
+            return smartMerge( objValue, srcValue, ':' );
+        }
         if ( _.isArray( objValue )) {
             return _.union( srcValue, objValue );
         }
