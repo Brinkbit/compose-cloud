@@ -1,6 +1,6 @@
 {
   "name": "compose-cloud",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Quick utility to convert between docker-compose and docker-cloud formats",
   "main": "src/index.js",
   "scripts": {
